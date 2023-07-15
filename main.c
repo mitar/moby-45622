@@ -14,7 +14,7 @@
 
 void testPtrace(int pid)
 {
-  printf("Ptrace start\n");
+  printf("ptrace start\n");
 
   printf("PTRACE_SEIZE\n");
   if (ptrace(PTRACE_SEIZE, pid, 0, 0) < 0)
@@ -44,7 +44,7 @@ void testPtrace(int pid)
     return;
   }
 
-  printf("Ptrace success\n");
+  printf("ptrace success\n");
 }
 
 void testPidfdGetfd(int pid)
