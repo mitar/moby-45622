@@ -74,15 +74,20 @@ void testPidfdGetfd(int pid)
   if (cmp < 0)
   {
     perror("kcmp");
+    close(fd);
+    close(pidfd);
+    return;
   }
   else if (cmp != 0)
   {
     printf("error: file descriptors should be equal");
+    close(fd);
+    close(pidfd);
+    return;
   }
 
   close(fd);
   close(pidfd);
-
   printf("pidfd_getfd success\n");
 }
 
@@ -96,10 +101,12 @@ void testKcmp(int pid)
   if (cmp < 0)
   {
     perror("kcmp");
+    return;
   }
   else if (cmp != 0)
   {
     printf("error: file descriptors should be equal");
+    return;
   }
 
   printf("kcmp success\n");
